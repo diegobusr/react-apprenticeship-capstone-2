@@ -1,8 +1,17 @@
+import { useState } from 'react';
 import { GlobalStyle } from '../../global.styles';
-import './App.css';
+import HomePage from '../../pages/Home';
 
 const App = () => {
-  return <GlobalStyle></GlobalStyle>;
+  const [data, setData] = useState(null);
+
+  return (
+    <>
+      {' '}
+      <GlobalStyle url={data?.url} />
+      <HomePage data={data} setData={setData} />
+    </>
+  );
 };
 
 export default App;

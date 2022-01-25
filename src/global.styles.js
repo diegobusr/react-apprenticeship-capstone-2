@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+// background-image: url(${(prop) => prop.url});
 
 export const GlobalStyle = createGlobalStyle`
 html {
@@ -12,9 +13,9 @@ html {
   -webkit-tap-highlight-color: rgba(0 0 0 0%);
 }
   body {
-    background: ${(prop) => (prop.darkThemeOn ? '#121212' : '#FFFFFF')};
+    background-image: url(${(prop) => prop.url});
     margin: 0;
-  padding: 0;
+    padding: 0;
   }
 
   *,
