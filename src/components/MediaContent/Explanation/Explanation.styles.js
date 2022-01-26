@@ -5,7 +5,7 @@ export const StyledSpan = styled.span`
   text-align: justify;
   margin: 3px 3px 3px 3px;
   color: white;
-  text-shadow: 3px 3px 5px #000000;
+  text-shadow: 1px 1px 0px #000000;
   ${(prop) =>
     !prop.expandTextButton &&
     css`
