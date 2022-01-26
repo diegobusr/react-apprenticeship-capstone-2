@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const LoadingDiv = styled.div`
   width: 40px;
   height: 40px;
-  background-color: #333;
+  background-color: #1c6a81;
 
   margin: 100px auto;
   -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;

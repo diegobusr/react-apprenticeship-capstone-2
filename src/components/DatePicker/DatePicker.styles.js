@@ -5,7 +5,7 @@ export const DateDiv = styled.div`
 
   span {
     color: white;
-    text-shadow: 2px 2px 4px #000000;
+    text-shadow: 3px 3px 5px #000000;
   }
 
   input {

@@ -7,7 +7,7 @@ export const ImageDiv = styled.div`
   height: 100vh;
   width: 100vw;
   z-index: -1;
-  filter: blur(7px);
+  filter: blur(11px);
   background-size: cover;
   overflow: hidden;
   position: fixed;

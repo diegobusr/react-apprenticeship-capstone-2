@@ -10,9 +10,7 @@ import ImageView from './ImageView';
 
 const MediaContent = ({ setUrlBackground, inputDate }) => {
   const [expandTextButton, setExpandTextButton] = useState(false);
-
   const { data, loading, error } = useFetch(urlApiGetPictureDay(inputDate));
-  // const { data, loading, error } = useFetch(urlApiGetPictureDay('2014-08-21'));
   const handleExpandButton = () => {
     setExpandTextButton((current) => !current);
   };
