@@ -2,37 +2,61 @@ import React, { useState } from 'react';
 import useFetch from '../../utils/hooks/useFetch';
 import { urlApiGetPictureDay } from '../../utils/nasa';
 import Loading from '../Loading';
-import { ContentDiv, StyledSpan } from './MediaContent.styles';
+import ButtonText from './ButtonText';
+import Explanation from './Explanation';
+import { ContentDiv } from './MediaContent.styles';
+import VideoView from './VideoView';
+import ImageView from './ImageView';
 
-const MediaContent = ({ inputDate, data }) => {
+const MediaContent = ({ setUrlBackground, inputDate }) => {
   const [expandTextButton, setExpandTextButton] = useState(false);
 
-  data = useFetch(urlApiGetPictureDay(inputDate)).data;
-  console.log('data media content', data);
-
+  const { data, loading, error } = useFetch(urlApiGetPictureDay(inputDate));
+  // const { data, loading, error } = useFetch(urlApiGetPictureDay('2014-08-21'));
   const handleExpandButton = () => {
-    console.log('expandTextButton', expandTextButton);
     setExpandTextButton((current) => !current);
   };
 
-  if (!data?.url) {
+  if (loading) {
     return <Loading />;
   }
 
-  return (
-    <ContentDiv>
-      <h2> {data.title} </h2>
-      <img src={data.url} alt="media-content" />
-      <StyledSpan expandTextButton={expandTextButton}>
-        {' '}
-        {data.explanation}
-      </StyledSpan>
-      <button onClick={handleExpandButton}>
-        {expandTextButton && <span>contract</span>}
-        {!expandTextButton && <span>expand</span>}
-      </button>
-    </ContentDiv>
-  );
+  if (error) {
+    return <span> There was an error, please try again.</span>;
+  }
+
+  const { media_type, title, url, explanation } = data;
+  setUrlBackground(url);
+
+  if (media_type === 'video') {
+    return (
+      <ContentDiv>
+        <VideoView title={title} url={url} />
+        <Explanation
+          expandTextButton={expandTextButton}
+          explanation={explanation}
+        />
+        <ButtonText
+          handleClick={handleExpandButton}
+          expandTextButton={expandTextButton}
+        />
+      </ContentDiv>
+    );
+  } else {
+    return (
+      <ContentDiv>
+        <ImageView url={url} title={title} />
+        <Explanation
+          expandTextButton={expandTextButton}
+          explanation={explanation}
+        />
+        <ButtonText
+          handleClick={handleExpandButton}
+          expandTextButton={expandTextButton}
+        />
+      </ContentDiv>
+    );
+  }
 };
 
 export default MediaContent;

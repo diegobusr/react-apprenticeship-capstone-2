@@ -13,7 +13,6 @@ html {
   -webkit-tap-highlight-color: rgba(0 0 0 0%);
 }
   body {
-    background-image: url(${(prop) => prop.url});
     margin: 0;
     padding: 0;
   }

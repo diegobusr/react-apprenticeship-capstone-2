@@ -1,15 +1,16 @@
 import { useState } from 'react';
-import { GlobalStyle } from '../../global.styles';
 import HomePage from '../../pages/Home';
+import { ImageDiv } from './App.styles';
+import { GlobalStyle } from '../../global.styles';
 
 const App = () => {
-  const [data, setData] = useState(null);
+  const [urlBackground, setUrlBackground] = useState('');
 
   return (
     <>
-      {' '}
-      <GlobalStyle url={data?.url} />
-      <HomePage data={data} setData={setData} />
+      <GlobalStyle />
+      <ImageDiv url={urlBackground} />
+      <HomePage setUrlBackground={setUrlBackground} />
     </>
   );
 };

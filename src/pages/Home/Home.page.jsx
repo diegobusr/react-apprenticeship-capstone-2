@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
+import { format } from 'date-fns';
 import Title from '../../components/Title';
 import DatePicker from '../../components/DatePicker';
 import MediaContent from '../../components/MediaContent';
 import { HomeDiv } from './Home.styles';
 
-function HomePage({ data, setData }) {
-  const [inputDate, setInputDate] = useState(new Date());
+function HomePage({ setUrlBackground }) {
+  const [inputDate, setInputDate] = useState(format(new Date(), 'yyyy-MM-dd'));
+
   return (
     <HomeDiv>
       <Title />
-      <DatePicker
-        inputDate={inputDate}
-        setInputDate={setInputDate}
-        setData={setData}
-      />
-      <MediaContent inputDate={inputDate} data={data} setData={setData} />
+      <DatePicker inputDate={inputDate} setInputDate={setInputDate} />
+      <MediaContent inputDate={inputDate} setUrlBackground={setUrlBackground} />
     </HomeDiv>
   );
 }
